@@ -23,6 +23,7 @@ Tally::Application.routes.draw do
   #   resources :products
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :boards, only: [:create, :destroy]
   # Example resource route with options:
   #   resources :products do
   #     member do

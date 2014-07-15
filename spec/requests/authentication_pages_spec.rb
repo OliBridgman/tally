@@ -79,6 +79,20 @@ describe "AuthenticationPages" do
           #it { should have_title('Sign in') }
         end
       end
+
+      describe "in the Boards controller" do
+
+        describe "submitting to the create action" do
+          before { post boards_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete board_path(FactoryGirl.create(:board)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
+
     end
 
     describe "as wrong user" do

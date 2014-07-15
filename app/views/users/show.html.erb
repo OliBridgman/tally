@@ -1,1 +1,10 @@
 <h1><%= @user.name %></h1>
+<div class="col-sm-12">
+    <% if @user.boards.any? %>
+      <h3>Boards (<%= @user.boards.count %>)</h3>
+      <ol class="boards">
+        <%= render @boards %>
+      </ol>
+      <%= will_paginate @boards %>
+	<% end %>
+</div>
