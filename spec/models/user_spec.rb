@@ -16,9 +16,21 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:admin) }
+  it { should respond_to(:boards) }
 
 
   it { should be_valid }
+  it { should_not be_admin }
+
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
 
   describe "when name is not present" do
     before { @user.name = " " }
@@ -104,6 +116,31 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "board associations" do
+
+    before { @user.save }
+    let!(:older_board) do
+      FactoryGirl.create(:board, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_board) do
+      FactoryGirl.create(:board, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right boards in the right order" do
+      expect(@user.boards.to_a).to eq [newer_board, older_board]
+    end
+
+    it "should destroy associated boards" do
+      boards = @user.boards.to_a
+      @user.destroy
+      expect(boards).not_to be_empty
+      boards.each do |board|
+        expect(Board.where(id: board.id)).to be_empty
+      end
+    end
+
   end
 
 end

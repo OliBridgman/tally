@@ -1,5 +1,18 @@
-<div class="jumbotron">
-  <h1>Welcome to Tally</h1>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="col-sm-6 col-sm-offset-3">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/board_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+  <div class="jumbotron">
+    <h1>Welcome to Tally</h1>
 
-   <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-</div>
+     <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>

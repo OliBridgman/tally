@@ -1,0 +1,13 @@
+<%= form_for(@board) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <fieldset>
+    <legend>New Board</legend>
+    <div class="form-group">
+      <%= f.label :title, class: "control-label" %>
+      <%= f.text_field :title, placeholder: "Create a new Board...", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+    </div>
+  </fieldset>  
+<% end %>

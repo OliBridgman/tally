@@ -22,6 +22,8 @@ gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.1.0'
 gem 'jbuilder', '2.0.6'
 gem 'bcrypt-ruby', '~> 3.1.5'
+gem 'will_paginate', '3.0.5'
+gem 'bootstrap-will_paginate', '0.0.10'
 
 group :doc do
   gem 'sdoc', '0.4.0', require: false

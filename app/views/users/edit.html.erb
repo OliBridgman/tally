@@ -1,12 +1,12 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, "Edit user") %>
+<h1>Update your profile</h1>
 
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
     <%= form_for(@user, :html => { :class => "form-horizontal" }) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <fieldset>
-        <legend>User Registration</legend>
+        <legend>User Information</legend>
         <div class="form-group">
           <%= f.label :name, class: "control-label" %>
           <%= f.text_field :name, class: "form-control" %>
@@ -17,11 +17,11 @@
           <%= f.label :password, class: "control-label" %>
           <%= f.password_field :password, class: "form-control" %>
 
-          <%= f.label :password_confirmation, "Confirmation", class: "control-label" %>
+          <%= f.label :password_confirmation, "Confirm Password", class: "control-label" %>
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+          <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
         </div>
       </fieldset>
     <% end %>
