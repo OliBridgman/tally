@@ -9,19 +9,19 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
     @boards = @user.boards.paginate(page: params[:page])
   end
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def create
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to Tally!"	
+      flash[:success] = "Welcome to Tally!" 
       redirect_to @user
     else
       render 'new'

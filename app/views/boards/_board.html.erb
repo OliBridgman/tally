@@ -1,5 +1,5 @@
-<li>
-  <span class="content"><%= board.title %></span>
+<li class="board-item">
+  <h2 class="content"><%= link_to board.title, board %></h2>
   <span class="timestamp">
     Posted <%= time_ago_in_words(board.created_at) %> ago.
   </span>
@@ -8,4 +8,6 @@
                                      data: { confirm: "You sure?" },
                                      title: board.title %>
   <% end %>
+  <br />
+  <span>Current mark count: <strong><%= board.marks.count %></strong></span>
 </li>
